@@ -1,0 +1,37 @@
+{
+  "id": "b8d27c5f-cee9-4089-ad20-b1211c1124f8",
+  "timestamp": "2017-01-04T01:13:55.04Z",
+  "result": {
+    "source": "agent",
+    "resolvedQuery": "four plus 4",
+    "action": "",
+    "actionIncomplete": false,
+    "parameters": {
+      "number1": "4",
+      "number2": "4",
+      "operation": "plus"
+    },
+    "contexts": [],
+    "metadata": {
+      "intentId": "18fc7bc4-f2c6-470d-8968-672bf4e51312",
+      "webhookUsed": false,
+      "webhookForSlotFillingUsed": "false",
+      "intentName": "cummulate-expression"
+    },
+    "fulfillment": {
+      "speech": "got it!",
+      "messages": [
+        {
+          "type": 0,
+          "speech": "keep going"
+        }
+      ]
+    },
+    "score": 1
+  },
+  "status": {
+    "code": 200,
+    "errorType": "success"
+  },
+  "sessionId": "56f44cd6-a9b4-4918-9d3a-116a42e718ef"
+}
