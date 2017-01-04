@@ -1,0 +1,38 @@
+{
+  "id": "509bb1bb-57b8-431b-b08f-944f91d718f2",
+  "timestamp": "2017-01-04T02:05:10.754Z",
+  "result": {
+    "source": "agent",
+    "resolvedQuery": "1+3",
+    "action": "",
+    "actionIncomplete": false,
+    "parameters": {
+      "number1": "1.12",
+      "number2": "3",
+      "operation": "plus"
+    },
+    "contexts": [],
+    "metadata": {
+      "intentId": "18fc7bc4-f2c6-470d-8968-672bf4e51312",
+      "webhookUsed": "true",
+      "webhookForSlotFillingUsed": "false",
+      "intentName": "cummulate-expression"
+    },
+    "fulfillment": {
+      "speech": "ok",
+      "messages": [
+        {
+          "type": 0,
+          "speech": "ok"
+        }
+      ]
+    },
+    "score": 1
+  },
+  "status": {
+    "code": 206,
+    "errorType": "partial_content",
+    "errorDetails": "Webhook call failed. Error message: org.springframework.http.converter.HttpMessageNotReadableException: Could not read JSON: Can not instantiate value of type [simple type, class com.speaktoit.api.server.webhook.model.WebhookResponse] from Floating-point number (4.0); no one-double/Double-arg constructor/factory method\n at [Source: sun.net.www.protocol.http.HttpURLConnection$HttpInputStream@542c2614; line: 1, column: 1]; nested exception is com.fasterxml.jackson.databind.JsonMappingException: Can not instantiate value of type [simple type, class com.speaktoit.api.server.webhook.model.WebhookResponse] from Floating-point number (4.0); no one-double/Double-arg constructor/factory method\n at [Source: sun.net.www.protocol.http.HttpURLConnection$HttpInputStream@542c2614; line: 1, column: 1] ErrorId: 73033748-9ea1-4f39-9d1c-2a95e28bab2a"
+  },
+  "sessionId": "56f44cd6-a9b4-4918-9d3a-116a42e718ef"
+}

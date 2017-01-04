@@ -33,7 +33,7 @@ def processRequest(req):
         params = result.get("parameters")
         n1 = params.get("number1")
         n2 = params.get("number2")
-        return options[params.get("operation")](float(n1) if n1 else 0.0, float(n2) if n2 else 0.0)
+        return makeWebhookResult(options[params.get("operation")](float(n1) if n1 else 0.0, float(n2) if n2 else 0.0))
 
 def plus(n1, n2):
     return n1 + n2
@@ -72,11 +72,11 @@ options = {
 
 def makeWebhookResult(data):
     return {
-        "speech": speech,
-        "displayText": speech,
+        "speech": data,
+        "displayText": "got it",
         # "data": data,
-        # "contextOut": [],
-        "source": "apiai-weather-webhook-sample"
+        "contextOut": [{"name":"matheline", "lifespan":2, "parameters":{"calculation":data}}],
+        "source": "matheline"
     }
 
 if __name__ == '__main__':
