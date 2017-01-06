@@ -35,11 +35,12 @@ def processRequest(req):
         n2 = params.get("number2")
 
         currentResult = options[params.get("operation")](float(n1) if n1 else 0.0, float(n2) if n2 else 0.0)
+        total = currentResult
 
         if len(result.get("contexts")) > 0:
-            currentResult += result.get("contexts")[0].get("parameters").get("calculation")
+            total += float(result.get("contexts")[0].get("parameters").get("total"))
 
-        return makeWebhookResult(currentResult)
+        return makeWebhookResult(currentResult, total)
 
 def plus(n1, n2):
     return n1 + n2
@@ -76,12 +77,12 @@ options = {
     'sqrt': sqrt
 }
 
-def makeWebhookResult(data):
+def makeWebhookResult(currentResult, total):
     return {
-        "speech": data,
-        "displayText": "got it",
-        # "data": data,
-        "contextOut": [{"name":"matheline", "lifespan":2, "parameters":{"calculation":data}}],
+        "speech": str(round(total, 2)),
+        "displayText": str(round(currentResult, 2)) + " added. " + str(round(total, 2)),
+        "data": round(currentResult, 2),
+        "contextOut": [{"name":"matheline", "lifespan":2, "parameters":{"total": round(total, 2)}}],
         "source": "matheline"
     }
 
