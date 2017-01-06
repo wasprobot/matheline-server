@@ -88,12 +88,15 @@ options = {
 
 def makeWebhookResult(currentResult, total):
     return {
-        "speech": str(round(total, 2)),
-        "displayText": str(round(currentResult, 2)) + " added. " + str(round(total, 2)),
-        "data": round(currentResult, 2),
-        "contextOut": [{"name":"matheline", "lifespan":2, "parameters":{"total": round(total, 2)}}],
+        "speech": sayIt(currentResult) + " added. " + sayIt(total),
+        "displayText": sayIt(currentResult) + " added. " + sayIt(total),
+        "data": sayIt(currentResult),
+        "contextOut": [{"name":"matheline", "lifespan":2, "parameters":{"total": sayIt(total)}}],
         "source": "matheline"
     }
+
+def sayIt(x):
+    return "{1:0.{0}f}".format(int(not float(x).is_integer()), x)
 
 if __name__ == '__main__':
     port = int(os.getenv('PORT', 5000))
