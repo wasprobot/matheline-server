@@ -33,7 +33,13 @@ def processRequest(req):
         params = result.get("parameters")
         n1 = params.get("number1")
         n2 = params.get("number2")
-        return makeWebhookResult(options[params.get("operation")](float(n1) if n1 else 0.0, float(n2) if n2 else 0.0))
+
+        currentResult = options[params.get("operation")](float(n1) if n1 else 0.0, float(n2) if n2 else 0.0)
+
+        if len(result.get("contexts")) > 0:
+            currentResult += result.get("contexts")[0].get("parameters").get("calculation")
+
+        return makeWebhookResult(currentResult)
 
 def plus(n1, n2):
     return n1 + n2
