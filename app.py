@@ -31,10 +31,19 @@ def processRequest(req):
     result = req.get("result")
     if result.get("metadata").get("intentName") == "cummulate-expression":
         params = result.get("parameters")
-        n1 = params.get("number1")
-        n2 = params.get("number2")
 
-        currentResult = options[params.get("operation")](float(n1) if n1 else 0.0, float(n2) if n2 else 0.0)
+        n1 = params.get("number1")
+        n1 = float(n1) if n1 else 0.0
+        n2 = params.get("number2")
+        n2 = float(n2) if n2 else 0.0
+
+        operation = params.get("operation")
+        if operation in options:
+            op = options[operation]
+            currentResult = op(n1, n2)
+        else:
+            currentResult = n1
+
         total = currentResult
 
         if len(result.get("contexts")) > 0:
